@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/kayza/Nextcloud/Kay Uni/HBRS/Informatik/Praktikum/1. Semester/projekt/Bingo/main.c
+stdio.h
+-
+time.h
+-
+stdlib.h
+-
+conio.h
+-
+

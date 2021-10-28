@@ -1,0 +1,3 @@
+C:/Users/kayza/Nextcloud/Kay Uni/HBRS/Informatik/Praktikum/1. Semester/projekt/Bingo/cmake-build-debug/CMakeFiles/Bingo.dir
+C:/Users/kayza/Nextcloud/Kay Uni/HBRS/Informatik/Praktikum/1. Semester/projekt/Bingo/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/kayza/Nextcloud/Kay Uni/HBRS/Informatik/Praktikum/1. Semester/projekt/Bingo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
