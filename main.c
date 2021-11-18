@@ -89,8 +89,7 @@ void shuffle(int zahlen[], int N) {
 
     //Mische da Zahlen
     for (int i = 0; i < N - 1; ++i) {
-        time_t t;
-        srand((unsigned) time(NULL));
+
         int j = rand() % (N - i) + i;
         int temp = zahlen[i];
         zahlen[i] = zahlen[j];
@@ -103,6 +102,7 @@ int main() {
     int N = 90;
     int zahlen[N];
     int winCon = 0;
+    srand((unsigned) time(NULL));
 
     shuffle(zahlen, N);
 
@@ -119,8 +119,6 @@ int main() {
 
     // Setzte das mittlere Feld auf 0 da dies immer frei ist
     arr[2][2] = 0;
-    //TODO Make Shuffle function more precise
-    getch();
     N = 90;
     int winner[N];
     shuffle(winner, N);
