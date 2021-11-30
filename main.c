@@ -156,16 +156,13 @@ int main() {
             }
             c++;
         }
-        printf("\nNochmal spielen? " );
-        int ant;
-        scanf("%i", &ant);
-        switch(ant){
-            case 0: playAgain = 0;
-            break;
-            case 1: playAgain = 1;
-            break;
-            default:
-                break;
+        printf("\nNochmal spielen? (Y)es (N)o" );
+        char ant;
+        scanf("%c", &ant);
+        if (ant == 'y' || ant == 'Y'){
+            playAgain = 0;
+        }else{
+            playAgain = 1;
         }
     }
 
