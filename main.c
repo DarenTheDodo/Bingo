@@ -150,7 +150,7 @@ int treffer(int arr[rows][cols], int winner[], int c){
                 // Überprüfe ob Treffer gefunden
                 if (check_horizontal(arr) == 1 || check_vertical(arr) == 1 || check_dia(arr) == 1) {
                     print_arr(arr);
-                    printf("BINGO!\nSIE HABEN GEWONNEN!");
+                    printf("BINGO!\nSIE HABEN GEWONNEN!\n");
                     return 1;
                 }
             }
@@ -191,9 +191,9 @@ int main() {
         //Solange die Sieges bedingung nicht erfüllt ist Spiele die Runde
         while (winCon == 0) {
             // Gebe die Bingo Karte aus
-            printf("PLAYER ONE: \n");
+            printf("\nPLAYER ONE: \n");
             print_arr(arr);
-            printf("PLAYER TWO: \n");
+            printf("\nPLAYER TWO: \n");
             print_arr(arr2);
 
             printf("Ziehe n\204chste Zahl? \n");
@@ -205,13 +205,16 @@ int main() {
 
 
             if(treffer(arr, winner, c) == 1){
-                winCon = treffer(arr, winner, c);
-                printf("Spieler 1 gewinnt");
+                printf("\nPLAYER TWO: \n");
+                print_arr(arr2);
+                printf("\nSpieler 1 gewinnt\n");
+
+                winCon = 1;
             }
 
             if(treffer(arr2, winner, c) == 1){
-                winCon = treffer(arr2, winner, c);
-                printf("Spieler 2 gewinnt");
+                printf("\nSpieler 2 gewinnt\n");
+                winCon = 1;
             }
 
 
