@@ -159,7 +159,6 @@ int main() {
             print_arr(arr);
 
             printf("Ziehe n\204chste Zahl? \n");
-            //Todo doppel ausgabe
             getch();
 
             printf("Es wurde: %i gezogen\n", winner[c]);
