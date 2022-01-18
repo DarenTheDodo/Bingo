@@ -61,8 +61,8 @@ int check_vertical(int arr[rows][cols]) {
     // Bei 5 Treffern sende return 1. Es besteht ein Bingo
     int i, j;
     int c = 0;
-    for (j = 0; j < rows; j++) {
-        for (i = 0; i < cols; i++) {
+    for (j = 0; j < cols; j++) {
+        for (i = 0; i < rows; i++) {
             if (arr[i][j] == 0) {
                 c++;
                 if (c == 5) {
@@ -70,7 +70,7 @@ int check_vertical(int arr[rows][cols]) {
                 }
             } else {
                 c = 0;
-                j = cols;
+                i = rows;
             }
         }
     }
@@ -83,7 +83,16 @@ int check_dia(int arr[rows][cols]) {
     // Bei 5 Treffern sende return 1 Es besteht ein Bingo
     int i, j;
     int c = 0;
-    for (j = 0, i = 0; j < rows, i < cols; j++, i++) {
+    for (j = 0, i = 0;  i < cols; j++, i++) {
+        if (arr[i][j] == 0) {
+            c++;
+            if (c == 5) {
+                return 1;
+            }
+        }
+    }
+    c = 0;
+    for (j = 0, i = 4; j < rows; j++, i--){
         if (arr[i][j] == 0) {
             c++;
             if (c == 5) {
@@ -93,6 +102,7 @@ int check_dia(int arr[rows][cols]) {
             return 0;
         }
     }
+
     return 0;
 }
 
@@ -121,6 +131,7 @@ int main() {
     srand((unsigned) time(NULL));
 
     while(playAgain == 0) {
+        playAgain = 0;
         int winCon = 0;
         shuffle(zahlen, N);
 
@@ -148,6 +159,7 @@ int main() {
             print_arr(arr);
 
             printf("Ziehe n\204chste Zahl? \n");
+            //Todo doppel ausgabe
             getch();
 
             printf("Es wurde: %i gezogen\n", winner[c]);
@@ -171,7 +183,8 @@ int main() {
             }
             c++;
         }
-        printf("\nNochmal spielen? (Y)es (N)o" );
+        playAgain = 0;
+        printf("\nNochmal spielen? (0) Yes (1) No\n" );
 
         scanf("%i", &playAgain);
 
