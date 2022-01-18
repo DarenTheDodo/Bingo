@@ -9,13 +9,28 @@ int cols = 5;
 void print_arr(int arr[rows][cols]) {
     // Gehe das Array Reihe für reihe durch und gebe es aus.
     int i, j;
+    printf("\xDA\xC4\xC4\xC4\xC4\xC2\xC4\xC4\xC4\xC4\xC2\xC4\xC4\xC4\xC4\xC2\xC4\xC4\xC4\xC4\xC2\xC4\xC4\xC4\xC4\xBF\n");
+    //printf("┌────┬────┬────┬────┬────┐  ");
     for (i = 0; i < rows; i++) {
         for (j = 0; j < cols; j++) {
-            printf("|%i\t", arr[i][j]);
+            if(arr[i][j] == 0){
+                printf("\xB3 \xDB\xDB ");
+            }
+            else if(arr[i][j]/10 == 0){
+                printf("\xB3 %i  ", arr[i][j]);
+            }
+            else{
+                printf("\xB3 %i ", arr[i][j]);
+            }
         }
-        printf("|\n");
+        printf("\xB3\n");
+
+        if(i != rows-1)
+        {
+            printf("\xC3\xC4\xC4\xC4\xC4\xC5\xC4\xC4\xC4\xC4\xC5\xC4\xC4\xC4\xC4\xC5\xC4\xC4\xC4\xC4\xC5\xC4\xC4\xC4\xC4\xB4\n");
+        }
     }
-    printf("\n");
+    printf("\xC0\xC4\xC4\xC4\xC4\xC1\xC4\xC4\xC4\xC4\xC1\xC4\xC4\xC4\xC4\xC1\xC4\xC4\xC4\xC4\xC1\xC4\xC4\xC4\xC4\xD9\n");
 }
 
 int check_horizontal(int arr[rows][cols]) {
@@ -82,7 +97,7 @@ int check_dia(int arr[rows][cols]) {
 }
 
 void shuffle(int zahlen[], int N) {
-    // Lade Zahlen in Array bis größe N
+    // Lade Zahlen in Array bis Größe N
     // So existiert jede Zahl nur einmal
     for (int i = 0; i <= N - 1; i++) {
         zahlen[i] = i + 1;
@@ -157,13 +172,9 @@ int main() {
             c++;
         }
         printf("\nNochmal spielen? (Y)es (N)o" );
-        char ant;
-        scanf("%c", &ant);
-        if (ant == 'y' || ant == 'Y'){
-            playAgain = 0;
-        }else{
-            playAgain = 1;
-        }
+
+        scanf("%i", &playAgain);
+
     }
 
     return 0;
