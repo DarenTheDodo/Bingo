@@ -123,6 +123,44 @@ void shuffle(int zahlen[], int N) {
     }
 }
 
+int fill_arr(int arr[rows][cols]){
+    int i, j;
+    int N = 90;
+    int zahlen[N];
+    shuffle(zahlen, N);
+    N = 0;
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++, N++) {
+            arr[i][j] = zahlen[N];
+        }
+    }
+    // Setzte das mittlere Feld auf 0 da dies immer frei ist
+    arr[2][2] = 0;
+    return 0;
+}
+
+
+int treffer(int arr[rows][cols], int winner[], int c){
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (arr[i][j] == winner[c]) {
+                arr[i][j] = 0;
+                printf("Treffer!\n"
+                       "");
+                // Überprüfe ob Treffer gefunden
+                if (check_horizontal(arr) == 1 || check_vertical(arr) == 1 || check_dia(arr) == 1) {
+                    print_arr(arr);
+                    printf("BINGO!\nSIE HABEN GEWONNEN!");
+                    return 1;
+                }
+            }
+
+        }
+    }
+    return 0;
+}
+
+
 int main() {
     // N = Reichweite der Zahlen auf der Bingo Karte
     int N = 90;
@@ -133,22 +171,19 @@ int main() {
     while(playAgain == 0) {
         playAgain = 0;
         int winCon = 0;
-        shuffle(zahlen, N);
-
-        //Setzte gemische Zahlen in unser 2d Array ein
-        int arr[rows][cols];
         int i, j;
         int c = 0;
-        N = 0;
-        for (i = 0; i < rows; i++) {
-            for (j = 0; j < cols; j++, N++) {
-                arr[i][j] = zahlen[N];
-            }
-        }
 
-        // Setzte das mittlere Feld auf 0 da dies immer frei ist
-        arr[2][2] = 0;
+        int arr[rows][cols];
+
+        int arr2[rows][cols];
+        fill_arr(arr);
+        fill_arr(arr2);
+
+        shuffle(zahlen, N);
+
         N = 90;
+        //Deklariere gezogene Zahlen
         int winner[N];
         shuffle(winner, N);
 
@@ -156,30 +191,36 @@ int main() {
         //Solange die Sieges bedingung nicht erfüllt ist Spiele die Runde
         while (winCon == 0) {
             // Gebe die Bingo Karte aus
+            printf("PLAYER ONE: \n");
             print_arr(arr);
+            printf("PLAYER TWO: \n");
+            print_arr(arr2);
 
             printf("Ziehe n\204chste Zahl? \n");
             getch();
 
             printf("Es wurde: %i gezogen\n", winner[c]);
-            for (i = 0; i < rows; i++) {
-                for (j = 0; j < cols; j++) {
-                    if (arr[i][j] == winner[c]) {
-                        arr[i][j] = 0;
-                        printf("Treffer!\n"
-                               "");
-                        // Überprüfe ob Treffer gefunden
-                        if (check_horizontal(arr) == 1 || check_vertical(arr) == 1 || check_dia(arr) == 1) {
-                            print_arr(arr);
-                            printf("BINGO!\nSIE HABEN GEWONNEN!");
-                            winCon = 1;
-                            j = cols;
-                            i = rows;
-                        }
-                    }
 
-                }
+
+
+
+            if(treffer(arr, winner, c) == 1){
+                winCon = treffer(arr, winner, c);
+                printf("Spieler 1 gewinnt");
             }
+
+            if(treffer(arr2, winner, c) == 1){
+                winCon = treffer(arr2, winner, c);
+                printf("Spieler 2 gewinnt");
+            }
+
+
+
+
+
+
+
+
             c++;
         }
         playAgain = 0;
